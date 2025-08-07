@@ -6,7 +6,15 @@
 
 django
 pytest
+pytest-django
 djangorestframework
+django-mptt
+python-dotenv
+drf-spectacular
+coverage
+
+
+black ###### for formatting
 
 #### Install virtual Environment
 
@@ -40,3 +48,14 @@ djangorestframework
 ###### Create a new app
 
 `python .\manage.py startapp product_app`
+
+
+##### Create Api Documents
+`python manage.py spectacular --file schema.yml`
+
+
+#### For testing
+`coverage run -m pytest`
+`coverage html`
+`pip install pytest-cov`
+`pytest-factoryboy`
