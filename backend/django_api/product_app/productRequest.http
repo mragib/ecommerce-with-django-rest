@@ -1,0 +1,9 @@
+### Get All Products ###
+GET http://localhost:8000/product/list/
+
+### Get All Categories ###
+GET http://localhost:8000/product/categories/
+
+
+### Get All Brands ###
+GET http://localhost:8000/product/brands/
