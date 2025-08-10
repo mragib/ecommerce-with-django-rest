@@ -26,6 +26,7 @@ class Brand(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=255, unique=True)
     description = models.TextField(blank=True)
     is_digital = models.BooleanField(default=False)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
@@ -36,6 +37,15 @@ class Product(models.Model):
         blank=True,
         related_name="products",
     )
+    is_active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
+
+
+class ProductLine(models.Model):
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    sku = models.CharField(max_length=100, unique=True)
+    stock_quantity = models.PositiveIntegerField(default=0)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="lines")
+    is_active = models.BooleanField(default=False)

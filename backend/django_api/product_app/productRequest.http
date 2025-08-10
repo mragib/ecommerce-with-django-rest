@@ -1,6 +1,14 @@
 ### Get All Products ###
 GET http://localhost:8000/product/list/
 
+### Get all Product by Categories ###
+GET http://localhost:8000/product/list/category/jeans/
+
+### Get a Product ###
+GET http://localhost:8000/product/list/1/
+
+
+
 ### Get All Categories ###
 GET http://localhost:8000/product/categories/
 
