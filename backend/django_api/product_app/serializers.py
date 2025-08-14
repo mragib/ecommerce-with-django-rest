@@ -14,18 +14,18 @@ class BrandSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ProductSerializer(serializers.ModelSerializer):
-    category = CategorySerializer(read_only=True)
-    brand = BrandSerializer(read_only=True)
-
-    class Meta:
-        model = Product
-        fields = "__all__"
-
-
 class ProductLineSerializer(serializers.ModelSerializer):
-    product = ProductSerializer(read_only=True)
 
     class Meta:
         model = ProductLine
+        fields = "__all__"
+
+
+class ProductSerializer(serializers.ModelSerializer):
+    category = CategorySerializer(read_only=True)
+    brand = BrandSerializer(read_only=True)
+    product_line = ProductLineSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Product
         fields = "__all__"

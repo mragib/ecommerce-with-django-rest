@@ -5,13 +5,23 @@ GET http://localhost:8000/product/list/
 GET http://localhost:8000/product/list/category/jeans/
 
 ### Get a Product ###
-GET http://localhost:8000/product/list/1/
+GET http://localhost:8000/product/list/wide-leg/
 
-
+### wide-leg
 
 ### Get All Categories ###
-GET http://localhost:8000/product/categories/
+GET http://localhost:8000/product/category/
 
 
 ### Get All Brands ###
-GET http://localhost:8000/product/brands/
+GET http://localhost:8000/product/brand/
+
+
+### Get User
+POSt http://test-api.ewubd.edu/users/authenticate
+Content-Type: application/json
+
+{
+    "username":"EnergeticEars",
+    "password":"r0D[<ug/$*OO14wE0@'ybZhLf"
+}
