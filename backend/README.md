@@ -12,6 +12,7 @@ django-mptt
 python-dotenv
 drf-spectacular
 coverage
+Pillow
 
 
 black ###### for formatting

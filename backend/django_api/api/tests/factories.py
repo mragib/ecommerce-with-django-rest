@@ -7,6 +7,7 @@ class CategoryFactory(factory.django.DjangoModelFactory):
         model = Category
 
     name = factory.Sequence(lambda n: f"test_category_{n}")
+    is_active = True
 
 
 class BrandFactory(factory.django.DjangoModelFactory):
@@ -14,6 +15,7 @@ class BrandFactory(factory.django.DjangoModelFactory):
         model = Brand
 
     name = factory.Sequence(lambda n: f"test_brand_{n}")
+    is_active = True
 
 
 class ProductFactory(factory.django.DjangoModelFactory):
@@ -21,6 +23,7 @@ class ProductFactory(factory.django.DjangoModelFactory):
         model = Product
 
     name = factory.Sequence(lambda n: f"test_product_{n}")
+    slug = factory.Sequence(lambda n: f"test-product-{n}")
     description = "This is a test product."
     is_digital = True
     category = factory.SubFactory(CategoryFactory)

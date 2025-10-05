@@ -14,7 +14,7 @@ from .models import Product, Category, Brand
 class CategoryViewSet(viewsets.ViewSet):
     """ViewSet for handling category related operations."""
 
-    queryset = Category.objects.all()
+    queryset = Category.objects.all().isactive()
 
     @extend_schema(
         summary="List all categories",
@@ -28,7 +28,7 @@ class CategoryViewSet(viewsets.ViewSet):
 class BrandViewSet(viewsets.ViewSet):
     """ViewSet for handling Brand related operations."""
 
-    queryset = Brand.objects.all()
+    queryset = Brand.objects.all().isactive()
 
     @extend_schema(
         summary="List all brands",
@@ -42,7 +42,7 @@ class BrandViewSet(viewsets.ViewSet):
 class ProductViewSet(viewsets.ViewSet):
     """ViewSet for handling Product related operations."""
 
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().isactive().select_related("brand", "category")
     lookup_field = "slug"
 
     @extend_schema(
@@ -64,7 +64,9 @@ class ProductViewSet(viewsets.ViewSet):
     def retrieve(self, request, slug=None):
         """Retrieve a single product by its ID."""
         try:
-            product = self.queryset.get(slug=slug)
+            product = self.queryset.filter(slug=slug).select_related(
+                "brand", "category"
+            )
             serializer = ProductSerializer(product)
             return Response(serializer.data)
         except Product.DoesNotExist:
